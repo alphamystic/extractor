@@ -13,3 +13,7 @@ We will borrow from this https://github.com/lktp/extractor/blob/master/pcap_extr
 
 Cases, make them like a small article
 have tags of threatfamily,Adminsapprooved,falsepositive
+
+
+# To dump a .pcap to a file:
+> go run extractor.go pcap/2018-01-20-Dridex.pcap 
