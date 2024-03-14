@@ -1,0 +1,4 @@
+GET /kjhy876g HTTP/1.1
+Host: www.takagari.com
+Connection: Keep-Alive
+

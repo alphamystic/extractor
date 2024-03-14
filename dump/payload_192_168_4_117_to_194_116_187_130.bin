@@ -1,0 +1,6 @@
+USER h41201
+PASS s107244
+TYPE I
+PASV
+SIZE /httpdocs/docs/scan_17.01.doc
+RETR /httpdocs/docs/scan_17.01.doc
