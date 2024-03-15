@@ -67,7 +67,7 @@ func PacketHandler(packet gopacket.Packet) *CommunicationPair {
 
 
 func (cp *CommunicationPair) DumpPayloadToFile(dir string) error {
-  name := "/" + utils.GenerateUUID() // There can be multiple packets with similar source IP and destination IP.
+  name := utils.GenerateUUID() // There can be multiple packets with similar source IP and destination IP.
   ipdst := fmt.Sprintf("_%s_to_%s.bin", strings.ReplaceAll(cp.SourceIP, ".", "_"), strings.ReplaceAll(cp.DestinationIP, ".", "_"))
   name = name + ipdst
   if err := os.MkdirAll(dir,os.ModePerm); err != nil  {
