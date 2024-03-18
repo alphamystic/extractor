@@ -61,7 +61,7 @@ func (d *Data) GetHandle(fileName string) error {
   return nil
 }
 
-type TCPSort struct{}
+
 type UDPSort struct{}
 type DNSSort struct{}
 type ICMPSort struct{}

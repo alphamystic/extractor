@@ -28,26 +28,61 @@ func TcpAnalyzer(gp *GroupedPair) error {
   return nil
 }
 
-/*
-// Example function to sort and group communication pairs
-func groupCommunicationPairs(pairs []*CommunicationPair) []GroupedPair {
-    groupedPairs := make(map[string][]*CommunicationPair)
-
-    for _, pair := range pairs {
-        protocol := determineProtocol(pair.Pkt)
-        groupedPairs[protocol] = append(groupedPairs[protocol], pair)
-    }
-
-    var groupedPairsList []GroupedPair
-    for protocol, pairs := range groupedPairs {
-        groupedPairsList = append(groupedPairsList, GroupedPair{
-            Protocol: protocol,
-            Pairs:    pairs,
-        })
-    }
-
-    return groupedPairsList
+type TCPSort struct {
+  HTTP []*CommunicationPair
+  HTTPS []*CommunicationPair
+  FTP []*CommunicationPair
+  SSH []*CommunicationPair
 }
+
+func (ts *TCPSort) HTTPSort(pairs []*CommunicationPair) error {
+  return nil
+}
+
+func (ts *TCPSort) HTTPSSort(pairs []*CommunicationPair) error {
+  return nil
+}
+
+func (ts *TCPSort) HTTPSort(pairs []*CommunicationPair) error {
+  return nil
+}
+
+func (ts *TCPSort) SSHSort(pairs []*CommunicationPair) error {
+  return nil
+}
+
+func (ts *TCPSort) FTPSort(pairs []*CommunicationPair) error {
+  return nil
+}
+
+
+
+func (ts *TCPSort) SortTCP() {
+  go func(pairs []*CommunicationPair){
+    if err := ts.HTTPSort(); err != nil {
+      fmt.Sprintf("[-] Error sorting HTTP packets: %q",err)
+    }
+  }()
+
+  go func(pairs []*CommunicationPair){
+    if err := ts.HTTPSort(); err != nil {
+      fmt.Sprintf("[-] Error sorting HTTP packets: %q",err)
+    }
+  }()
+
+  go func(pairs []*CommunicationPair){
+    if err := ts.SSHSort(); err != nil {
+      fmt.Sprintf("[-] Error sorting HTTP packets: %q",err)
+    }
+  }()
+
+  go func(pairs []*CommunicationPair){
+    if err := ts.FTPSort(); err != nil {
+      fmt.Sprintf("[-] Error sorting HTTP packets: %q",err)
+    }
+  }()
+}
+
 
 // determineProtocol tries to determine the specific protocol (HTTP, HTTPS, FTP, SSH) based on the packet content
 func determineProtocol(pkt gopacket.Packet) string {
@@ -73,4 +108,3 @@ func determineProtocol(pkt gopacket.Packet) string {
 func contains(s, substr string) bool {
     return len(s) >= len(substr) && s[:len(substr)] == substr
 }
-*/

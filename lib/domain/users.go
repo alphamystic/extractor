@@ -2,7 +2,7 @@ package definers
 
 
 import (
-  "github.com/alphamystic/profiler/libgo/utils"
+  "github.com/alphamystic/extractor/lib/utils"
 )
 
 type UserData struct {
